@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.container {
+   width: 25em;
+   margin: 5em auto;
+   box-shadow: 0px 0px 43px 17px, rgba(153, 153, 153, 1.0);
+   background: #101010;
+}
+
+.display {
+    background-color: #222;
+    color: #fff;
+    text-align: right;
+    height: 6em;
+    line-height: 8em;
+    padding: 0 1.5em;
+    font-size: 1.7em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 1.7em 0;
+    margin: auto 0.5em;
+}
+
+.controls button {
+    background-color: #222;
+    color: #fff;
+    height: 5.5em;
+    cursor: pointer;
+    margin: 0.5em;
+    border: none;
+    border-radius: 0.5em;
+    outline: unset;
+}
+
+.controls button:hover {
+    background-color: #333;
+}
+
+.controls button:active {
+    transform: translateY(0.5em);
+}
+
+.controls .teal {
+    background-color: teal;
+}
+
+.controls .teal:hover{
+    background-color: #006664;
+}
+
+@media screen and (max-width: 760px) {
+    .container {
+        width: 100vw;
+        height: 100vh;
+        margin: auto;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
