@@ -30,7 +30,6 @@ for (let button of controlButtons) {
 
         if (!secondValue && btnvalue === '=') return null
 
-        if(firstValue === btnValueIsSymbol) return null 
         
         if(btnvalue === "C") {
             firstValue = secondValue = symbol
@@ -43,10 +42,6 @@ for (let button of controlButtons) {
             symbol = btnvalue
         }
 
-        if (btnvalue === 'CE') {
-            firstValue = secondValue = symbol
-            return display.innerText.toString().slice(0, -1)
-        }
 
 
         else if (!symbol) firstValue += btnvalue
