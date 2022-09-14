@@ -16,9 +16,9 @@ class Calculator {
         this.currentOperator = this.currentOperator.toString().slice(0, -1)
     }
 
-    appendNumber(no) {
-        if(no === '.' && this.currentOperator.includes('.')) return
-        this.currentOperator = this.currentOperator.toString() + no.toString()
+    appendNumber(num) {
+        if(num === '.' && this.currentOperator.includes('.')) return
+        this.currentOperator = this.currentOperator.toString() + num.toString()
     }
 
     operation(evaluate) {
@@ -35,7 +35,7 @@ class Calculator {
         let calc
         const prev = parseFloat(this.prevOperator)
         const current = parseFloat(this.currentOperator)
-        if(isNaN(prev) || isNaN(current)) return
+        if (isNaN(prev) || isNaN(current)) return
         switch (this.evaluate) {
             case '-':
                 calc = prev - current
@@ -57,17 +57,17 @@ class Calculator {
         this.prevOperator = ''
     }
 
-    displayNum(no) {
-        const number = no.toString()
+    displayNum(num) {
+        const number = num.toString()
         const integers = parseFloat(number.split('.')[0])
         const decimals = number.split('.')[1]
         let integerResult
         if(isNaN(integers)) {
             integerResult = ''
         } else {
-            integerResult = integers.toLocaleString('en', {maximumFractionDigits: 0})
+            integerResult = integers.toLocaleString('en', { maximumFractionDigits: 0 })
         }
-        if(decimals !== null) {
+        if(decimals != null) {
             return `${integers}.${decimals}`
         } else {
             return integers
@@ -75,9 +75,11 @@ class Calculator {
     }
 
     updateResult() {
-        this.currentOperatorElement.innerText = this.displayNum(this.currentOperator) 
-        if(this.evaluate !== null) {
-            this.prevOperatorElement.innerText= `${this.displayNum(this.prevOperator)} ${this.evaluate}`
+        this.currentOperatorElement.innerText = 
+        this.displayNum(this.currentOperator) 
+        if(this.evaluate != null) {
+            this.prevOperatorElement.innerText= 
+            `${this.displayNum(this.prevOperator)} ${this.evaluate}`
         } else {
             this.prevOperatorElement.innerText = ''
         }
@@ -96,7 +98,6 @@ const calculator = new Calculator(prevOperatorElement, currentOperatorElement)
 
 numericKeys.forEach(button => {
     button.addEventListener('click', () => {
-        console.log(5);
         calculator.appendNumber(button.innerText)
         calculator.updateResult()
     })
