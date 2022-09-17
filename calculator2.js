@@ -8,11 +8,12 @@ class Calculator {
   clear() {
     this.currentOperator = 0;
     this.prevOperator = 0;
+    history = []
     this.operation = undefined;
   }
 
   delete() {
-    this.currentOperator = this.currentOperator.toString().slice(0, -1);
+    this.currentOperator = this.currentOperator.toString().slice(0, -1)
   }
 
   appendNumber(number) {
@@ -22,9 +23,15 @@ class Calculator {
 
   newOperation(operation) {
     if (this.currentOperator === "") return;
-    if (this.prevOperator !== "") {
+    if (this.prevOperator !== "")
+    {
       this.compute();
     }
+
+    if (history !== ['']){
+      this.currentOperator = history[0]
+    }
+
     this.operation = operation;
     this.prevOperator = this.currentOperator;
     this.currentOperator = "";
@@ -52,6 +59,7 @@ class Calculator {
         return;
     }
     this.currentOperator = calc;
+    history.push(this.currentOperator)
     this.operation = undefined;
     this.prevOperator = "";
   }
@@ -65,7 +73,7 @@ class Calculator {
       integerResult = "";
     } else {
       integerResult = integers.toLocaleString("en", {
-        maximumFractionDigits: 0,
+        maximumFractionDigits: 0
       });
     }
     if (decimals != null) {
@@ -96,20 +104,19 @@ const delBtn = document.querySelector("[del]");
 const clearBtn = document.querySelector("[clr]");
 const prevOperatorElement = document.querySelector("[prev]");
 const currentOperatorElement = document.querySelector("[current]");
+let history = []
 
-let prev = 0;
-let current = 0;
 
 const calculator = new Calculator(prevOperatorElement, currentOperatorElement);
 
-numericKeys.forEach((button) => {
+numericKeys.forEach(button => {
   button.addEventListener("click", () => {
     calculator.appendNumber(button.innerText);
     calculator.updateResult();
   });
 });
 
-operationals.forEach((button) => {
+operationals.forEach(button => {
   button.addEventListener("click", () => {
     calculator.newOperation(button.innerText);
     calculator.updateResult();
